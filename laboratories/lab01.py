@@ -165,15 +165,6 @@ def kasiski(archivo):
 ################# INSERTAR CADENA #################
 
 def insertarCad(cadena,archivo):
-  '''
-  new = archivo
-  for i in range(19,len(archivo),20):
-    new = archivo[:i] + cadena + archivo[i:]
-  
-  if len(new) % 4 != 0:
-    print("sii2222222222222222222222")
-  print(new)
-  '''
   c = 0
   pos = -1
   for i in range(19,len(archivo),20):
