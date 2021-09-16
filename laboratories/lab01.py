@@ -246,5 +246,7 @@ def main():
   cadena = "AQUÍ"
   preprocesamiento(file,True,cadena)
 
+  # comment
+
 if __name__ == "__main__":
   main()
