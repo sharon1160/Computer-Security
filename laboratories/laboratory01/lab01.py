@@ -198,7 +198,7 @@ def unicode_8(archivo):
   letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   for i in range(len(letras)):
-    archivo = archivo.replace(letras[i], code_point[i])
+    archivo = archivo.replace(letras[i], code_point[i]).replace(letras[i].lower(), code_point[i])
   
   return archivo
 
@@ -209,13 +209,21 @@ def unicode_8230(archivo):
 
 ################# PREPROCESAMIENTO #################
 
-def preprocesamiento(file):
+def preprocesamiento(file, sustitucion = "letras"):
 
   with open(file, 'r', encoding = 'utf-8-sig') as input:
     archivo = input.read()
 
-    # 1) Sustitucion de carácteres
-    archivo = sustituir(archivo)
+    if sustitucion == "letras":
+      # 1) Sustitucion de carácteres
+      archivo = sustituir(archivo)
+    elif sustitucion == "unicode-8":
+      # 7) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8
+      archivo = unicode_8(archivo)
+      print(archivo)
+    elif sustitucion == "unicode-8230":
+      # 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
+      archivo = unicode_8230(archivo)
 
     # 2) Quitando tíldes 
     archivo = quitar_tildes(archivo)
@@ -253,7 +261,7 @@ def preprocesamiento(file):
     print()
 
     # 6) Aplicando el método Kasiski 
-    trigamas = kasiski(archivo)
+    trigamas = kasiski(archivo2)
     mostrar_trigramas(trigamas)
 
     return archivo2
@@ -269,16 +277,14 @@ def main():
 
   # 7) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8
   print("\n###################################################### SEGUNDO PREPROCESAMIENTO ######################################################")
-  archivo =  preprocesamiento(file)
-  archivo = unicode_8(archivo)
+  archivo =  preprocesamiento(file,"unicode-8")
   print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8\n\n",archivo)
   with open('HERALDOSNEGROS_unicode_8.txt', 'w') as output:
     output.write(archivo)
 
   # 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
   print("\n###################################################### TERCER PREPROCESAMIENTO ######################################################")
-  archivo =  preprocesamiento(file)
-  archivo = unicode_8230(archivo)
+  archivo =  preprocesamiento(file,"unicode-8230")
   print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8230\n\n",archivo)
   with open('HERALDOSNEGROS_unicode_8230.txt', 'w') as output:
     output.write(archivo)
