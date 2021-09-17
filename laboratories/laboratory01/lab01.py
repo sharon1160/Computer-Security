@@ -239,29 +239,31 @@ def preprocesamiento(file, sustitucion = "letras"):
   with open('HERALDOSNEGROS_pre.txt', 'r', encoding='utf-8-sig') as input:
     archivo2 = input.read()
 
-    # 5) Tabla de frecuencias para cada letra de la ’A’ a ’Z’. 
-    frecuencias_result = frecuencias(archivo2)
-    # mostrando el diccionario de frecuencias
-    print("\n DICCIONARIO DE FRECUENCIAS")
-    print("\n",frecuencias_result)
-    # mostrando la tabla de frecuencias
-    print("\nTABLA DE FRECUENCIAS")
-    mostrar_frecuencias(frecuencias_result)
-    print()
+    if sustitucion == "letras":
+      # 5) Tabla de frecuencias para cada letra de la ’A’ a ’Z’. 
+      frecuencias_result = frecuencias(archivo2)
+      # mostrando el diccionario de frecuencias
+      print("\n DICCIONARIO DE FRECUENCIAS")
+      print("\n",frecuencias_result)
+      # mostrando la tabla de frecuencias
+      print("\nTABLA DE FRECUENCIAS")
+      mostrar_frecuencias(frecuencias_result)
+      print()
 
-    # Obteniendo los cinco caracteres de mayor frecuencia 
-    mayores_dic = frecuencias_mayores(frecuencias_result)
-    # mostrando el diccionario de las 5 mayores frecuencias
-    print("\n DICCIONARIO DE LAS 5 MAYORES FRECUENCIAS")
-    print("\n",mayores_dic)
-    # mostrando la tabla de las 5 mayores frecuencias
-    print("\nTABLA DE LOS 5 CARÁCTERES CON MAYOR FRECUENCIA")
-    mostrar_frecuencias(mayores_dic)
-    print()
+      # Obteniendo los cinco caracteres de mayor frecuencia 
+      mayores_dic = frecuencias_mayores(frecuencias_result)
+      # mostrando el diccionario de las 5 mayores frecuencias
+      print("\n DICCIONARIO DE LAS 5 MAYORES FRECUENCIAS")
+      print("\n",mayores_dic)
+      # mostrando la tabla de las 5 mayores frecuencias
+      print("\nTABLA DE LOS 5 CARÁCTERES CON MAYOR FRECUENCIA")
+      mostrar_frecuencias(mayores_dic)
+      print()
 
-    # 6) Aplicando el método Kasiski 
-    trigamas = kasiski(archivo2)
-    mostrar_trigramas(trigamas)
+    if sustitucion != "unicode-8230":
+      # 6) Aplicando el método Kasiski 
+      trigamas = kasiski(archivo2)
+      mostrar_trigramas(trigamas)
 
     return archivo2
 
