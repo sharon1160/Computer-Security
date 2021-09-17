@@ -22,12 +22,12 @@ def mostrar_trigramas(trigramas):
     list_pos = trigramas[trigrama]['Posiciones']
     list_dist = trigramas[trigrama]['Distancias']
 
-    if len(list_pos) > 6:
+    if len(list_pos) > 5:
       c = 0
       for a,b in list_pos:
-        if c < 4:
+        if c < 3:
           posCad += "("+ str(a) + "," +str(b)+") "
-        if c == 5:
+        if c == 4:
           posCad += "("+ str(a) + "," +str(b)+")..."
           break
         c+=1
@@ -35,10 +35,10 @@ def mostrar_trigramas(trigramas):
       for a,b in list_pos:
         posCad += "("+ str(a) + "," +str(b)+") "
 
-    if len(list_dist) > 6:
+    if len(list_dist) > 5:
       c = 0
       for i in range(len(list_dist)-1):
-        if c < 4:
+        if c < 3:
           distCad += str(list_dist[i]) + ","
         else:
           distCad += str(list_dist[i]) + "..."
