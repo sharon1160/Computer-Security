@@ -272,12 +272,16 @@ def main():
   archivo =  preprocesamiento(file)
   archivo = unicode_8(archivo)
   print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8\n\n",archivo)
+  with open('HERALDOSNEGROS_unicode_8.txt', 'w') as output:
+    output.write(archivo)
 
   # 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
   print("\n###################################################### TERCER PREPROCESAMIENTO ######################################################")
   archivo =  preprocesamiento(file)
   archivo = unicode_8230(archivo)
   print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8230\n\n",archivo)
+  with open('HERALDOSNEGROS_unicode_8230.txt', 'w') as output:
+    output.write(archivo)
   
   # 9) Insertar AQUÍ cada 20 caracteres
   cadena = "AQUÍ"
@@ -285,6 +289,8 @@ def main():
   archivo = preprocesamiento(file)
   archivo = insertarCad(cadena,archivo)
   print("\nTEXTO PREPROCESADO INSERTANDO 'AQUI'\n\n",archivo)
+  with open('HERALDOSNEGROS_insertando_aqui.txt', 'w') as output:
+    output.write(archivo)
 
 
 if __name__ == "__main__":
