@@ -262,7 +262,7 @@ def preprocesamiento(file):
 
 def main():
 
-  file = 'input.txt'
+  file = 'HERALDOSNEGROS.txt'
   print("\n###################################################### PRIMER PREPROCESAMIENTO ######################################################")
   archivo = preprocesamiento(file)
   print("\nTEXTO PREPROCESADO\n\n",archivo)
