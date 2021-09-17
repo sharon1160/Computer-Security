@@ -2,6 +2,8 @@
 
 ## Funciones Elementales de Criptografía
 
+El código fuente fue desarrollado en Python.
+
 ### Texto Plano
 ```
 Hay golpes en la vida, tan fuertes... ¡Yo no sé!
