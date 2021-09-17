@@ -188,15 +188,31 @@ def insertarCad(cadena,archivo):
   
   return archivo
 
+################# UNICODE-8 Y UNICODE-8230 #################
+
+def unicode_8(archivo):
+  code_point = ["41","42","43","44","45",
+  "46","47","48","49","4A","4B","4C","4D",
+  "4E","4F","50","51","52","53","54","55",
+  "56","57","58","59","5A"]
+  letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+  for i in range(len(letras)):
+    archivo = archivo.replace(letras[i], code_point[i])
+  
+  return archivo
+
+def unicode_8230(archivo):
+  for i in archivo:
+    archivo = archivo.replace(i,"\u8230")
+  return archivo
+
 ################# PREPROCESAMIENTO #################
 
-def preprocesamiento(file,insertar = False,cadena = ""):
+def preprocesamiento(file):
 
   with open(file, 'r', encoding = 'utf-8-sig') as input:
     archivo = input.read()
-
-    if insertar == True:
-      archivo = insertarCad(cadena,archivo)
 
     # 1) Sustitucion de carácteres
     archivo = sustituir(archivo)
@@ -218,18 +234,20 @@ def preprocesamiento(file,insertar = False,cadena = ""):
 
     # 5) Tabla de frecuencias para cada letra de la ’A’ a ’Z’. 
     frecuencias_result = frecuencias(archivo2)
-    # mostrando el diccionario
+    # mostrando el diccionario de frecuencias
     print("\n DICCIONARIO DE FRECUENCIAS")
     print("\n",frecuencias_result)
+    # mostrando la tabla de frecuencias
     print("\nTABLA DE FRECUENCIAS")
     mostrar_frecuencias(frecuencias_result)
     print()
 
     # Obteniendo los cinco caracteres de mayor frecuencia 
-    # https://www.delftstack.com/es/howto/python/how-to-sort-a-dictionary-by-value/
     mayores_dic = frecuencias_mayores(frecuencias_result)
+    # mostrando el diccionario de las 5 mayores frecuencias
     print("\n DICCIONARIO DE LAS 5 MAYORES FRECUENCIAS")
     print("\n",mayores_dic)
+    # mostrando la tabla de las 5 mayores frecuencias
     print("\nTABLA DE LOS 5 CARÁCTERES CON MAYOR FRECUENCIA")
     mostrar_frecuencias(mayores_dic)
     print()
@@ -238,13 +256,35 @@ def preprocesamiento(file,insertar = False,cadena = ""):
     trigamas = kasiski(archivo)
     mostrar_trigramas(trigamas)
 
-def main():
-  file = 'input.txt'
-  preprocesamiento(file)
+    return archivo2
 
+################# MAIN #################
+
+def main():
+
+  file = 'input.txt'
+  print("\n###################################################### PRIMER PREPROCESAMIENTO ######################################################")
+  archivo = preprocesamiento(file)
+  print("\nTEXTO PREPROCESADO\n\n",archivo)
+
+  # 7) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8
+  print("\n###################################################### SEGUNDO PREPROCESAMIENTO ######################################################")
+  archivo =  preprocesamiento(file)
+  archivo = unicode_8(archivo)
+  print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8\n\n",archivo)
+
+  # 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
+  print("\n###################################################### TERCER PREPROCESAMIENTO ######################################################")
+  archivo =  preprocesamiento(file)
+  archivo = unicode_8230(archivo)
+  print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8230\n\n",archivo)
+  
   # 9) Insertar AQUÍ cada 20 caracteres
   cadena = "AQUÍ"
-  preprocesamiento(file,True,cadena)
+  print("\n###################################################### CUARTO PREPROCESAMIENTO ######################################################")
+  archivo = preprocesamiento(file)
+  archivo = insertarCad(cadena,archivo)
+  print("\nTEXTO PREPROCESADO INSERTANDO 'AQUI'\n\n",archivo)
 
 
 if __name__ == "__main__":
