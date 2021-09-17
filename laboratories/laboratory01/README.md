@@ -295,7 +295,7 @@ def kasiski(archivo):
 #### Resultado
 
 ```
-                                                KASISKI
+                                                 KASISKI
 +------------------------------------------------------------------------------------------------------+
 | Trigrama    Ocurrencias                                             Posiciones             Distancias|
 |------------------------------------------------------------------------------------------------------|
@@ -328,7 +328,7 @@ def kasiski(archivo):
 | SZO             2                                                     (26,584)                   558 |
 | ZON             3                                           (27,112) (112,585)                85,473 |
 | ONO             4                                 (28,113) (113,473) (473,586)            85,360,113 |
-| NOS             7   (29,114) (114,244) (244,404) (404,408) (408,474) (474,587)   85,130,160,4,66,113 |
+| NOS             7                     (29,114) (114,244) (244,404) (408,474)...      85,130,160,4... |
 | OSE             6               (30,93) (93,115) (115,405) (405,522) (522,588)      63,22,290,117,66 |
 | SCO             3                                             (38,55) (55,447)                17,392 |
 | COM             4                                   (39,56) (56,448) (448,531)             17,392,83 |
@@ -344,7 +344,7 @@ def kasiski(archivo):
 | EEL             3                                           (65,317) (317,465)               252,148 |
 | ELL             2                                                     (66,172)                   106 |
 | LLO             2                                                     (67,173)                   106 |
-| LOS             7     (68,85) (85,198) (198,224) (224,280) (280,441) (441,498)   17,113,26,56,161,57 |
+| LOS             7                       (68,85) (85,198) (198,224) (280,441)...      17,113,26,56... |
 | OSL             3                                           (69,475) (475,503)                406,28 |
 | ADE             3                                           (78,296) (296,397)               218,101 |
 | TOD             2                                                     (81,511)                   430 |
@@ -442,19 +442,11 @@ def unicode_8(archivo):
     archivo = archivo.replace(letras[i], code_point[i])
   
   return archivo
-  
-# 7) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8
-print("\n###################################################### SEGUNDO PREPROCESAMIENTO ######################################################")
-archivo =  preprocesamiento(file)
-archivo = unicode_8(archivo)
-print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8\n\n",archivo)
-with open('HERALDOSNEGROS_unicode_8.txt', 'w') as output:
-  output.write(archivo)
 ```
 #### Resultado
 
 ```
-49415A474F4C504553454E4C415649444154414E465645525445535A4F4E4F5345474F4C504553434F4D4F44454C4F44494F444544494F53434F4D4F5349414E5445454C4C4F534C415245534143414445544F444F4C4F5356465249444F5345454D504F5A415241454E454C414C4D415A4F4E4F5345534F4E504F434F535045524F534F4E414252454E5A414E4941534F534356524153454E454C524F5354524F4D4153464945524F5A454E454C4C4F4D4F4D4153465645525445534552414E54414C56455A4C4F53504F54524F5344454241524241524F534154494C41534F4C4F53494552414C444F534E4547524F535156454E4F534D414E44414C414D5645525445534F4E4C4153434149444153494F4E44415344454C4F5343524953544F5344454C414C4D414445414C47564E41464541444F5241424C45515645454C44455354494E4F424C415346454D4145534F53474F4C50455353414E475249454E544F53534F4E4C41534352455049544143494F4E45534445414C47554E50414E515645454E4C4150564552544144454C494F524E4F53454E4F535156454D415A454C494F4D425245504F425245504F4252455656454C56454C4F534F494F53434F4D4F4356414E444F504F52534F425245454C494F4D42524F4E4F534C4C414D41564E4150414C4D4144415656454C56454C4F534F494F534C4F434F535A544F444F4C4F56495649444F5345454D504F5A41434F4D4F43494152434F444543564C5041454E4C414D495241444149415A474F4C504553454E4C415649444154414E465645525445535A4F4E4F5345
+484159474F4C504553454E4C415649444154414E46554552544553594F4E4F53E474F4C504553434F4D4F44454C4F44494F444544494F53434F4D4F5349414E5445454C4C4F534C415245534143414445544F444F4C4F5355465249444F5345454D504F5A415241454E454C414C4D41594F4E4F53E534F4E504F434F535045524F534F4E414252454E5A414E4A41534F534355524153454E454C524F5354524F4DA53464945524F59454E454C4C4F4D4F4DA53465545525445534552A4E54414C56455A4C4F53504F54524F53444542A524241524F534154494C41534F4C4F53484552414C444F534E4547524F535155454E4F534D414E44414C414D5545525445534F4E4C41534341I444153484F4E44415344454C4F5343524953544F5344454C414C4D414445414C47554E41464541444F5241424C45515545454C44455354494E4F424C415346454D4145534F53474F4C50455353414E475249454E544F53534F4E4C41534352455049544143494F4E45534445414C47U4E50414E515545454E4C4150554552544144454C484F524E4F53454E4F535155454D4159454C484F4D425245504F425245504F4252455655454C56454C4F534F4A4F53434F4D4F4355414E444F504F52534F425245454C484F4D42524F4E4F534C4C414D41554E4150414C4D4144415655454C56454C4F534F4A4F534C4F434F5359544F444F4C4F56495649444F5345454D504F5A41434F4D4F43484152434F444543554C5041454E4C414D4952414441484159474F4C504553454E4C415649444154414E46554552544553594F4E4F53E
 ```
 
 ### 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
@@ -464,14 +456,6 @@ def unicode_8230(archivo):
   for i in archivo:
     archivo = archivo.replace(i,"\u8230")
   return archivo
- 
-# 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
-print("\n###################################################### TERCER PREPROCESAMIENTO ######################################################")
-archivo =  preprocesamiento(file)
-archivo = unicode_8230(archivo)
-print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8230\n\n",archivo)
-with open('HERALDOSNEGROS_unicode_8230.txt', 'w') as output:
-  output.write(archivo)
 ```
 #### Resultado
 
@@ -505,15 +489,6 @@ def insertarCad(cadena,archivo):
       archivo = archivo + "X"
   
   return archivo
-  
-# 9) Insertar AQUÍ cada 20 caracteres
-cadena = "AQUÍ"
-print("\n###################################################### CUARTO PREPROCESAMIENTO ######################################################")
-archivo = preprocesamiento(file)
-archivo = insertarCad(cadena,archivo)
-print("\nTEXTO PREPROCESADO INSERTANDO 'AQUI'\n\n",archivo)
-with open('HERALDOSNEGROS_insertando_aqui.txt', 'w') as output:
-  output.write(archivo)
 ```
 #### Resultado
 
