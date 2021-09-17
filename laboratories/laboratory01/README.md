@@ -295,7 +295,7 @@ def kasiski(archivo):
 #### Resultado
 
 ```
-                                                KASISKI
+                                                 KASISKI
 +------------------------------------------------------------------------------------------------------+
 | Trigrama    Ocurrencias                                             Posiciones             Distancias|
 |------------------------------------------------------------------------------------------------------|
@@ -328,7 +328,7 @@ def kasiski(archivo):
 | SZO             2                                                     (26,584)                   558 |
 | ZON             3                                           (27,112) (112,585)                85,473 |
 | ONO             4                                 (28,113) (113,473) (473,586)            85,360,113 |
-| NOS             7   (29,114) (114,244) (244,404) (404,408) (408,474) (474,587)   85,130,160,4,66,113 |
+| NOS             7                     (29,114) (114,244) (244,404) (408,474)...      85,130,160,4... |
 | OSE             6               (30,93) (93,115) (115,405) (405,522) (522,588)      63,22,290,117,66 |
 | SCO             3                                             (38,55) (55,447)                17,392 |
 | COM             4                                   (39,56) (56,448) (448,531)             17,392,83 |
@@ -344,7 +344,7 @@ def kasiski(archivo):
 | EEL             3                                           (65,317) (317,465)               252,148 |
 | ELL             2                                                     (66,172)                   106 |
 | LLO             2                                                     (67,173)                   106 |
-| LOS             7     (68,85) (85,198) (198,224) (224,280) (280,441) (441,498)   17,113,26,56,161,57 |
+| LOS             7                       (68,85) (85,198) (198,224) (280,441)...      17,113,26,56... |
 | OSL             3                                           (69,475) (475,503)                406,28 |
 | ADE             3                                           (78,296) (296,397)               218,101 |
 | TOD             2                                                     (81,511)                   430 |
@@ -442,14 +442,6 @@ def unicode_8(archivo):
     archivo = archivo.replace(letras[i], code_point[i])
   
   return archivo
-  
-# 7) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8
-print("\n###################################################### SEGUNDO PREPROCESAMIENTO ######################################################")
-archivo =  preprocesamiento(file)
-archivo = unicode_8(archivo)
-print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8\n\n",archivo)
-with open('HERALDOSNEGROS_unicode_8.txt', 'w') as output:
-  output.write(archivo)
 ```
 #### Resultado
 
@@ -464,14 +456,6 @@ def unicode_8230(archivo):
   for i in archivo:
     archivo = archivo.replace(i,"\u8230")
   return archivo
- 
-# 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
-print("\n###################################################### TERCER PREPROCESAMIENTO ######################################################")
-archivo =  preprocesamiento(file)
-archivo = unicode_8230(archivo)
-print("\nTEXTO PREPROCESADO SEGÚN UNICODE-8230\n\n",archivo)
-with open('HERALDOSNEGROS_unicode_8230.txt', 'w') as output:
-  output.write(archivo)
 ```
 #### Resultado
 
@@ -505,15 +489,6 @@ def insertarCad(cadena,archivo):
       archivo = archivo + "X"
   
   return archivo
-  
-# 9) Insertar AQUÍ cada 20 caracteres
-cadena = "AQUÍ"
-print("\n###################################################### CUARTO PREPROCESAMIENTO ######################################################")
-archivo = preprocesamiento(file)
-archivo = insertarCad(cadena,archivo)
-print("\nTEXTO PREPROCESADO INSERTANDO 'AQUI'\n\n",archivo)
-with open('HERALDOSNEGROS_insertando_aqui.txt', 'w') as output:
-  output.write(archivo)
 ```
 #### Resultado
 
