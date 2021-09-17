@@ -220,7 +220,6 @@ def preprocesamiento(file, sustitucion = "letras"):
     elif sustitucion == "unicode-8":
       # 7) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8
       archivo = unicode_8(archivo)
-      print(archivo)
     elif sustitucion == "unicode-8230":
       # 8) Volver a preprocesar el archivo cambiando cada carácter según UNICODE-8230
       archivo = unicode_8230(archivo)
